@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select menuid, caption from sys_menu where command is null or command = '' order by caption"
+}

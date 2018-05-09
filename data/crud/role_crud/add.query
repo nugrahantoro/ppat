@@ -1,0 +1,51 @@
+{
+   "defaultparamtype" : "post",
+   "paramlist" : [
+	  {
+         "caption" : "Id",
+         "groupname" : "group_a",
+		 "lookup-refresh" : "permissionsid",
+         "name" : "roleid",
+         "ptype" : "disable",
+         "visible" : 0
+      },
+      {
+         "caption" : "Role Name",
+         "groupname" : "group_a",
+         "name" : "rolename",
+         "ptype" : "text"
+      },
+	  {
+         "caption" : "Role Name 2",
+         "groupname" : "group_a",
+         "name" : "rolename2",
+         "ptype" : "hidden"
+      },
+      {
+         "caption" : "Description",
+         "groupname" : "group_a",
+         "name" : "description",
+         "ptype" : "text"
+      },
+      {
+         "caption" : "Roles",
+         "groupname" : "group_a",
+         "lookup-params" : {
+            "colcount" : 3,
+            "roleid" : ""
+         },
+         "lookupname" : "cbpermissions",
+         "name" : "permissionsid",
+         "ptype" : "checklistbox"
+      }
+   ],
+   "scriptfile" : "validation",
+   "sqlexec" : "",
+    "title" : "Tambah Role",
+   "cmdtype" : "method",
+   "methodexec" : {
+		"objectname" : "crud/m_custom",
+		"methodname" : "simpan_role",
+		"params" : {"test": "Testing"}
+	}
+}

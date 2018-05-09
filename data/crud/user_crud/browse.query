@@ -1,0 +1,88 @@
+{
+   "actions" : [
+      {
+         "caption" : "Tambah User",
+         "modalwidth" : 700,
+         "name" : "add",
+         "type" : "act-add"
+      }
+   ],
+   "fieldlist" : [
+      {
+         "btype" : "text",
+         "caption" : "Username (untuk login)",
+         "etype" : "text",
+         "name" : "username"
+      },
+      {
+         "btype" : "text",
+         "caption" : "Nama Lengkap User",
+         "etype" : "text",
+         "name" : "fullname"
+      },
+	  {
+         "btype" : "text",
+         "caption" : "Telepon User",
+         "etype" : "text",
+         "name" : "telepon"
+      },
+      {
+         "btype" : "text",
+         "caption" : "Roles",
+         "etype" : "text",
+         "name" : "rolenames"
+      }
+   ],
+   "paramlist" : [
+      {
+         "caption" : "Search",
+         "groupname" : "group_a",
+         "name" : "textsearch",
+         "ptype" : "text"
+      },
+      {
+         "caption" : "Pagerec",
+         "name" : "pagerec",
+         "ptype" : "hidden",
+         "value" : 10
+      },
+      {
+         "caption" : "Pagenum",
+         "name" : "pagenum",
+         "ptype" : "hidden",
+         "value" : 1
+      }
+   ],
+   "rowactions" : {
+      "caption" : "Actions",
+      "list" : [
+         {
+            "hint" : "Edit User",
+            "modalwidth" : 700,
+            "name" : "edit",
+            "type" : "ra-edit"
+         },
+         {
+            "action" : "setpassword",
+            "caption" : "",
+            "class" : "btn-success",
+            "hint" : "Set password",
+            "icon" : "fa fa-lock",
+            "name" : "setpassword",
+            "type" : "default",
+            "xtype" : "button"
+         },
+         {
+            "hint" : "Delete User",
+            "name" : "delete",
+            "type" : "ra-delete"
+         }
+      ],
+      "position" : "left",
+      "tdoptions" : "width=\"120px\"",
+      "width" : "8"
+   },
+   "sql" : "select a.userid, a.username, a.username as username2, a.telepon, a.fullname,a.sms, b.rolenames, b.userroles \r\nfrom sys_users a\r\nleft join (\r\nselect x.userid, \r\n    group_concat(distinct y.rolename order by y.rolename separator ',') as rolenames, \r\n group_concat(distinct y.roleid order by y.roleid separator ',') as userroles\r\n    from sys_userroles x\r\n    left join sys_roles y on x.roleid = y.roleid\r\n    group by userid\r\n) b on a.userid = b.userid\r\nwhere ((fullname like concat('%',:textsearch,'%') or :textsearch is null) OR (username like concat('%',:textsearch,'%') or :textsearch is null))\r\norder by a.userid\r\nlimit :pagerec offset :datastart",
+   "sqlcount" : "select count(*) \r\nfrom sys_users a\r\nleft join (\r\nselect x.userid, \r\n    group_concat(distinct y.rolename order by y.rolename separator ',') as rolenames,  \r\n group_concat(distinct y.roleid order by y.roleid separator ',') as userroles\r\n    from sys_userroles x\r\n    left join sys_roles y on x.roleid = y.roleid\r\n    group by userid\r\n) b on a.userid = b.userid\r\nwhere ((fullname like concat('%',:textsearch,'%') or :textsearch is null) OR (username like concat('%',:textsearch,'%') or :textsearch is null))\r\n\r\n",
+   "title" : "Data User"
+}

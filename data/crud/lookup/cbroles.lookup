@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select roleid, concat(description, ' ( ', rolename, ' ) ') as rolename \r\nfrom sys_roles \r\nwhere roleid NOT IN (3,7)\r\norder by rolename"
+}

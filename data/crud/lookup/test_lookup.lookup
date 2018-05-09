@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select 'L' as fld1, 'Laki-laki ' || :p1 as fld2 union select 'P', 'Perempuan ' || :p1"
+}

@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select a.permissionid, c.caption, case when b.permissionid is null then 0 else 1 end as checked\r\nfrom sys_permissions a\r\nleft join (\r\n  select permissionid from sys_rolepermissions where roleid = :roleid\r\n) b on a.permissionid = b.permissionid\r\nleft join sys_menu c on (a.category='menu' and a.permissionname = c.menuname) where c.menuid NOT IN (select parentid from sys_menu where parentid <> 0 group by parentid)\r\norder by permissionname"
+}

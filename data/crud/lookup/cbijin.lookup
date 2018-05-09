@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select a.jns_ijin, a.nama_jns_ijin, case when b.jns_ijin is null then 0 else 1 end as checked \r\nfrom ref_jns_ijin a\r\nleft join (\r\n  select jns_ijin from sys_userijin where userid = :userid\r\n) b on a.jns_ijin = b.jns_ijin\r\norder by a.jns_ijin"
+}

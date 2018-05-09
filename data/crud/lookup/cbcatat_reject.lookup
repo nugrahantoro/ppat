@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select id_catatan, catatan \r\nfrom ref_catatan where category='2' and rolename='kabid' \r\norder by catatan"
+}

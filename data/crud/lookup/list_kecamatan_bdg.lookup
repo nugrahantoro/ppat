@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select a.kode, a.nama from ref_kecamatan a where a.kode_kabkot = '3273' order by a.nama"
+}

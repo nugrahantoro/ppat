@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select akses_id as aksesid, akses_name, if(sys_roleakses.id IS NULL, 0,1) as checked from ref_akses  LEFT JOIN sys_roleakses ON sys_roleakses.aksesid = ref_akses.akses_id AND sys_roleakses.roleid = :roleid order by akses_id"
+}

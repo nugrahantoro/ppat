@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select id_sektor, nama_sektor from ref_sektor_ijin order by nama_sektor"
+}

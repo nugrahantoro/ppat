@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select * FROM mst_skpd order by nama"
+}

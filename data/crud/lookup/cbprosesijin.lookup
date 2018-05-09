@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select taskname, caption from tb_taskname"
+}

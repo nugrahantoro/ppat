@@ -1,0 +1,29 @@
+{
+   "defaultparamtype" : "post",
+   "message" : "Role berikut ini akan dihapus. Tekan OK untuk melanjutkan",
+   "paramlist" : [
+      {
+         "caption" : "Id",
+         "groupname" : "group_a",
+         "lookup-refresh" : "permissionsid",
+         "name" : "roleid",
+         "ptype" : "disable",
+         "visible" : 0
+      },
+      {
+         "caption" : "Role Name",
+         "groupname" : "group_a",
+         "name" : "rolename",
+         "ptype" : "disable"
+      },
+      {
+         "caption" : "Description",
+         "groupname" : "group_a",
+         "name" : "description",
+         "ptype" : "disable"
+      }
+   ],
+   "scriptfile" : "validation",
+   "sqlexec" : "delete from sys_roles\r\nwhere roleid = :roleid;\r\ndelete from sys_rolepermissions where roleid = :roleid;\r\ndelete from sys_userroles where roleid = :roleid;",
+   "title" : "Hapus Role"
+}

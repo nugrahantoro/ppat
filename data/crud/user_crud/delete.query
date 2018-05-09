@@ -1,0 +1,35 @@
+{
+   "defaultparamtype" : "post",
+   "message" : "User berikut ini akan dihapus. Tekan OK untuk melanjutkan",
+   "paramlist" : [
+      {
+         "caption" : "Id User",
+         "groupname" : "group_a",
+         "lookup-refresh" : "userroles",
+         "name" : "userid",
+         "ptype" : "disable",
+         "visible" : 0
+      },
+      {
+         "caption" : "Username (untuk login)",
+         "groupname" : "group_a",
+         "name" : "username",
+         "ptype" : "disable"
+      },
+      {
+         "caption" : "Nama Lengkap",
+         "groupname" : "group_a",
+         "name" : "fullname",
+         "ptype" : "disable"
+      },
+      {
+         "caption" : "Roles",
+         "groupname" : "group_a",
+         "name" : "rolenames",
+         "ptype" : "disable"
+      }
+   ],
+   "scriptfile" : "validation",
+   "sqlexec" : "delete from sys_users\r\nwhere userid = :userid\r\n;\r\ndelete from sys_userroles where userid = :userid\r\n",
+   "title" : "Hapus Data User"
+}

@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select jns_layanan, nama_layanan from ref_jns_layanan order by jns_layanan"
+}

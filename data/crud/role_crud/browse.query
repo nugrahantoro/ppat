@@ -1,0 +1,73 @@
+{
+   "actions" : [
+      {
+         "caption" : "Tambah Role",
+         "modalwidth" : 700,
+         "name" : "add",
+         "type" : "act-add"
+      }
+   ],
+   "fieldlist" : [
+      {
+         "btype" : "text",
+         "caption" : "Role Name",
+         "etype" : "text",
+         "name" : "rolename"
+      },
+      {
+         "btype" : "text",
+         "caption" : "Description",
+         "etype" : "text",
+         "name" : "description"
+      },
+	  {
+         "btype" : "text",
+         "caption" : "Daftar Akses",
+         "etype" : "text",
+         "name" : "captions"
+      }
+   ],
+   "paramlist" : [
+      {
+         "caption" : "Search",
+         "groupname" : "group_a",
+         "name" : "textsearch",
+         "ptype" : "text"
+      },
+      {
+         "caption" : "Pagerec",
+         "name" : "pagerec",
+         "ptype" : "hidden",
+         "value" : 10
+      },
+      {
+         "caption" : "Pagenum",
+         "name" : "pagenum",
+         "ptype" : "hidden",
+         "value" : 1
+      }
+   ],
+   "rowactions" : {
+      "caption" : "Actions",
+      "list" : [
+         {
+  	    "class" : "btn-success",
+            "hint" : "Edit Role",
+            "modalwidth" : 700,
+            "name" : "edit",
+            "type" : "ra-edit"
+         },
+         {
+            "hint" : "Delete Role",
+            "name" : "delete",
+            "type" : "ra-delete"
+         }
+      ],
+      "position" : "left",
+      "tdoptions" : "width=\"80px\"",
+      "width" : "8"
+   },
+   "sql" : "select a.roleid, a.rolename, a.rolename as rolename2, a.description, a.use_pin, (IF(a.use_pin = 1,'Ya','Tidak')) as pin, a.proses_izin,  b.permissions,  b.permissionsid,  b.captions from  sys_roles a left join ( select x.roleid,  group_concat(distinct y.permissionname order by y.permissionname separator ', ') as permissions, group_concat(distinct y.permissionid order by y.permissionid separator ', ') as permissionsid, group_concat(distinct z.caption order by z.caption separator ', ') as captions from sys_rolepermissions x left join sys_permissions y on x.permissionid = y.permissionid left join sys_menu z on (y.category='menu' and y.permissionname = z.menuname)  where z.menuid NOT IN (select parentid from sys_menu where parentid <> 0 group by parentid) group by roleid ) b on a.roleid = b.roleid where  ((a.rolename like concat('%',:textsearch,'%') or :textsearch is null) OR (b.captions like concat('%',:textsearch,'%') or :textsearch is null)) order by a.roleid\r\nlimit :pagerec offset :datastart",
+   "sqlcount" : "select count(*) \r\nfrom sys_roles a\r\nleft join (\r\nselect x.roleid, \r\n    group_concat(distinct y.permissionname order by y.permissionname separator ', ') as permissions,\r\n group_concat(distinct y.permissionid order by y.permissionid separator ', ') as permissionsid,\r\n group_concat(distinct z.caption order by z.caption separator ', ') as captions\r\n    from sys_rolepermissions x\r\n    left join sys_permissions y on x.permissionid = y.permissionid\r\n left join sys_menu z on (y.category='menu' and y.permissionname = z.menuname) \r\nwhere z.menuid NOT IN (select parentid from sys_menu where parentid <> 0 group by parentid)\r\n   group by roleid\r\n) b on a.roleid = b.roleid\r\nwhere ((a.rolename like concat('%',:textsearch,'%') or :textsearch is null) OR (b.captions like concat('%',:textsearch,'%') or :textsearch is null))\r\n\r\n",
+   "title" : "Data Roles"
+}

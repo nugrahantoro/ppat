@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select a.roleid, concat(a.description, ' ( ', a.rolename, ' ) ') as rolename, case when b.roleid is null then 0 else 1 end as checked\r\nfrom sys_roles a\r\nleft join (\r\n  select roleid from sys_userroles where userid = :userid\r\n) b on a.roleid = b.roleid\r\nwhere a.roleid NOT IN (3,7)\r\norder by rolename"
+}

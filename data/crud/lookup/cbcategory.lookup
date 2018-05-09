@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select id, nama \r\nfrom category_proses \r\norder by id"
+}

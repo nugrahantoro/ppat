@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select rolename, description from sys_roles where roleid NOT IN (1,3,7) order by description"
+}

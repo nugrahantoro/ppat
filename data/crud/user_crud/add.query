@@ -1,0 +1,57 @@
+{
+   "defaultparamtype" : "post",
+   "paramlist" : [
+      {
+         "caption" : "Id User",
+         "groupname" : "group_a",
+         "lookup-refresh" : "userroles",
+         "name" : "userid",
+         "ptype" : "disable",
+         "visible" : 0
+      },
+      {
+         "caption" : "Username (untuk login)",
+         "groupname" : "group_a",
+         "name" : "username",
+         "ptype" : "text"
+      },
+      {
+         "caption" : "Nama Lengkap",
+         "groupname" : "group_a",
+         "name" : "fullname",
+         "ptype" : "text"
+      },
+	  {
+         "caption" : "No Handphone",
+         "groupname" : "group_a",
+         "name" : "telepon",
+         "ptype" : "text"
+      },
+	  {
+         "caption" : "Username 2",
+         "groupname" : "group_a",
+         "name" : "username2",
+         "ptype" : "hidden"
+      },
+      {
+         "caption" : "Roles",
+         "groupname" : "group_a",
+         "lookup-params" : {
+            "colcount" : 2,
+            "userid" : ""
+         },
+         "lookupname" : "cbroles",
+         "name" : "userroles",
+         "ptype" : "lookup"
+      }
+   ],
+   "scriptfile" : "validation",
+   "sqlexec" : "",
+    "title" : "Tambah Data User",
+   "cmdtype" : "method",
+   "methodexec" : {
+		"objectname" : "crud/m_custom",
+		"methodname" : "simpan_user",
+		"params" : {"test": "Testing"}
+	}
+}

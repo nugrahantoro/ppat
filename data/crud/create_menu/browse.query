@@ -1,0 +1,80 @@
+{
+   "actions" : [
+      {
+         "caption" : "Tambah Menu",
+         "modalwidth" : 700,
+         "name" : "add",
+         "type" : "act-add"
+      }
+   ],
+   "fieldlist" : [
+      {
+         "btype" : "text",
+         "caption" : "Nama Menu",
+         "etype" : "text",
+         "name" : "menuname"
+      },
+      {
+         "btype" : "text",
+         "caption" : "Caption",
+         "etype" : "text",
+         "name" : "caption"
+      },
+	  {
+         "btype" : "text",
+         "caption" : "Parrent Menu",
+         "etype" : "text",
+         "name" : "parrent_menu"
+      },
+	  {
+         "btype" : "text",
+         "caption" : "Urutan Menu",
+         "etype" : "text",
+         "name" : "viewindex"
+      }
+   ],
+   "paramlist" : [
+      {
+         "caption" : "Search",
+         "groupname" : "group_a",
+         "name" : "textsearch",
+         "ptype" : "text"
+      },
+      {
+         "caption" : "Pagerec",
+         "name" : "pagerec",
+         "ptype" : "hidden",
+         "value" : 10
+      },
+      {
+         "caption" : "Pagenum",
+         "name" : "pagenum",
+         "ptype" : "hidden",
+         "value" : 1
+      }
+   ],
+   "rowactions" : {
+      "caption" : "Actions",
+      "list" : [
+         {
+	    
+	    "class" : "btn-success",
+            "hint" : "Edit Menu",
+            "modalwidth" : 600,
+            "name" : "edit",
+            "type" : "ra-edit"
+         },
+         {
+            "hint" : "Delete Menu",
+            "name" : "delete",
+            "type" : "ra-delete"
+         }
+      ],
+      "position" : "left",
+      "tdoptions" : "width=\"80px\"",
+      "width" : "8"
+   },
+   "sql" : "select a.*, a.menuname as nama2, case when a.parentid='0' then ' root' else (select x.menuname from sys_menu x where x.menuid = a.parentid) end as parrent_menu from sys_menu a where ((a.caption like concat('%',:textsearch,'%') or :textsearch is null) OR (a.menuname like concat('%',:textsearch,'%') or :textsearch is null)) and a.ismenu='1' and a.visible='1' order by parrent_menu, a.caption limit :pagerec offset :datastart",
+   "sqlcount" : "select count(*) from sys_menu where ((caption like concat('%',:textsearch,'%') or :textsearch is null) OR (menuname like concat('%',:textsearch,'%') or :textsearch is null)) and ismenu='1' and visible='1'",
+   "title" : "Daftar Menu Aplikasi"
+}

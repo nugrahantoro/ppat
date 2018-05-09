@@ -1,0 +1,33 @@
+{
+   "defaultparamtype" : "post",
+   "paramlist" : [
+      {
+         "caption" : "Id User",
+         "groupname" : "group_a",
+         "lookup-refresh" : "jns_ijin",
+         "name" : "userid",
+         "ptype" : "hidden",
+         "visible" : 1
+      },
+      {
+         "caption" : "Akses Perizinan",
+         "groupname" : "group_a",
+         "lookup-params" : {
+            "colcount" : 2,
+            "userid" : ""
+         },
+         "lookupname" : "cbijin",
+         "name" : "jns_ijin",
+         "ptype" : "checklistbox"
+      }
+   ],
+   "sqlexec" : "",
+   "title" : "Akses Perizinan User",
+   "title-name" : "username",
+   "cmdtype" : "method",
+   "methodexec" : {
+		"objectname" : "crud/m_custom",
+		"methodname" : "simpan_userijin",
+		"params" : {"test": "Testing"}
+	}
+}

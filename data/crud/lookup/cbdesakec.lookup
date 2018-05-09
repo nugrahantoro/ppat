@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select a.id, a.nama, case when b.ref_desa_id is null then 0 else 1 end as checked from ref_desa a left join ( select ref_desa_id from sys_user_desa where userid = :userid) b on a.id = b.ref_desa_id where a.kode_kec = :id_kec order by a.nama"
+}

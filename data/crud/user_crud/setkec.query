@@ -1,0 +1,33 @@
+{
+   "defaultparamtype" : "post",
+   "paramlist" : [
+      {
+         "caption" : "Id User",
+         "groupname" : "group_a",
+         "lookup-refresh" : "id",
+         "name" : "userid",
+         "ptype" : "hidden",
+         "visible" : 1
+      },
+      {
+         "caption" : "Akses Kecamatan",
+         "groupname" : "group_a",
+         "lookup-params" : {
+            "colcount" : 2,
+            "userid" : ""
+         },
+         "lookupname" : "cbkec",
+         "name" : "id",
+         "ptype" : "checklistbox"
+      }
+   ],
+   "sqlexec" : "",
+   "title" : "Akses Kecamatan User",
+   "title-name" : "username",
+   "cmdtype" : "method",
+   "methodexec" : {
+		"objectname" : "crud/m_custom",
+		"methodname" : "simpan_userkec",
+		"params" : {"test": "Testing"}
+	}
+}

@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select id,nama from jns_pend_non_formal order by nama ASC"
+}

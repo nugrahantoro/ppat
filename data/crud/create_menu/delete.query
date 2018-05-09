@@ -1,0 +1,34 @@
+{
+   "defaultparamtype" : "post",
+   "message" : "Role berikut ini akan dihapus. Tekan OK untuk melanjutkan",
+   "paramlist" : [
+      {
+         "caption" : "Nama Menu",
+         "groupname" : "group_a",
+         "name" : "caption",
+         "ptype" : "disable"
+      },
+      {
+         "caption" : "Description",
+         "groupname" : "group_a",
+         "name" : "description",
+         "ptype" : "disable"
+      },
+	   {
+         "caption" : "Menu Id",
+         "groupname" : "group_a",
+         "name" : "menuid",
+         "ptype" : "hidden",
+         "visible" : 0
+      },
+	   {
+         "caption" : "Nama Menu",
+         "groupname" : "group_a",
+         "name" : "menuname",
+         "ptype" : "hidden",
+		  "visible" : 0
+      }
+   ],
+   "sqlexec" : "delete from sys_menu\r\nwhere menuid = :menuid;\r\ndelete from sys_permissions where category = 'menu' and permissionname = :menuname;\r\ndelete from sys_rolepermissions where permissionid IN (select permissionid from  sys_permissions where category = 'menu' and permissionname = :menuname);",
+   "title" : "Hapus Menu"
+}

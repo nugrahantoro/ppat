@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select bulan,nama \r\nfrom param_target_bulanan_bulan \r\norder by bulan"
+}

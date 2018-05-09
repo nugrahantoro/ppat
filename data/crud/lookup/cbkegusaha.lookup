@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select id,nama from ref_kegiatan_usaha order by nama ASC"
+}

@@ -1,0 +1,4 @@
+{
+   "lookuptype" : "database",
+   "sql" : "select id,nama \r\nfrom ref_kelas_jalan \r\norder by id"
+}

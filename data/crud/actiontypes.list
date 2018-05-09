@@ -1,0 +1,18 @@
+{
+	"default": {},
+	"ra-edit": {"caption": "", "icon": "fa fa-edit", "class": "btn-info", "action": "edit", "xtype": "button"},
+	"ra-next": {"caption": "", "icon": "fa fa-pencil", "class": "btn-info", "action": "next", "xtype": "button"},
+	"ra-delete": {"caption": "", "icon": "fa fa-trash-o", "class": "btn-danger", "action": "delete", "xtype": "button"},
+	"ra-activate": {"caption": "", "icon": "fa fa-check", "class": "btn-success", "action": "activate", "xtype": "multi",
+	"items": [{"xtype": "button", "caption": "Activate", "action": "activate"}, {"xtype": "button", "caption": "Deactivate", "action": "deactivate"}]},
+	"ra-info": {"caption": "", "icon": "fa fa-info-sign", "class": "btn-info", "action": "info", "xtype": "button"},
+	"ra-jump": {"caption": "", "icon": "fa fa-info-sign", "class": "btn-info", "xtype": "link"},
+	"ra-reply": {"caption": "", "icon": "fa fa-reply", "class": "btn-success", "action": "reply", "xtype": "button"},
+	"ra-komplain": {"caption": "", "icon": "fa fa-warning-sign", "class": "btn-warning", "action": "complaint", "xtype": "button"},
+	"ra-search": {"caption": "", "icon": "fa fa-search", "class": "btn-success", "action": "search", "xtype": "button"},
+	"act-add": {"caption": "Add", "icon": "fa fa-plus", "class": "btn-info", "action": "add", "xtype": "button"},
+	"btn-info": {"caption": "", "icon": "fa fa-cog", "class": "btn-info", "xtype": "button"},
+	"btn-success": {"caption": "", "icon": "fa fa-cog", "class": "btn-success", "xtype": "button"},
+	"btn-warning": {"caption": "", "icon": "fa fa-cog", "class": "btn-warning", "xtype": "button"},
+	"btn-danger": {"caption": "", "icon": "fa fa-cog", "class": "btn-danger", "xtype": "button"}
+}
