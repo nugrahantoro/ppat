@@ -26,7 +26,8 @@
     function tolak($id){
       $status = 'Ditolak';
       $data=array(
-                  'status' => $status);
+                  'status'     => $status,
+                  'keterangan' => $this->input->post('keterangan'));
       $this->db->where('id',$id);
       $this->db->update('data_laporan',$data);
     }

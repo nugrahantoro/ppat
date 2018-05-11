@@ -8,6 +8,33 @@
 				<div class="page-header">
 					<h1>Detail Laporan PPAT</h1>
 				</div>
+				<div class="col-xs-8">
+					<div class="list-group">
+						<?php foreach ($laporan as $b) {} ?>
+						<table>
+							<tr>
+								<td class="alert alert-info">No PPATK</td>
+								<td class="alert alert-info">:</td>
+								<td class="alert alert-info"><?php echo $b->no_sk_ppat; ?></td>
+							</tr>
+							<tr>
+								<td class="alert alert-info">Nama PPATK</td>
+								<td class="alert alert-info">:</td>
+								<td class="alert alert-info"><?php echo $b->nama_ppat; ?></td>
+							</tr>
+							<tr>
+								<td class="alert alert-info">Bulan</td>
+								<td class="alert alert-info">:</td>
+								<td class="alert alert-info"><?php echo $b->periode_bulan; ?></td>
+							</tr>
+							<tr>
+								<td class="alert alert-info">Tahun</td>
+								<td class="alert alert-info">:</td>
+								<td class="alert alert-info"><?php echo $b->periode_tahun; ?></td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div class="col-xs-12">
 					<div style="overflow-x:auto;">
 						<table id="example" class="table table-bordered" style="width:auto">
@@ -18,7 +45,8 @@
                   <th rowspan="2"><center>Bentuk Perbuatan Hukum</center></th>
                   <th colspan="2"><center>Nama Alamat dan NPWP</center></th>
                   <th rowspan="2"><center>Jenis dan Nomor Hak</center></th>
-                  <th colspan="2"><center>Luas</center></th>
+									<th rowspan="2"><center>Letak Tanah dan Bangunan</center></th>
+                  <th colspan="2"><center>Luas (m2)</center></th>
                   <th rowspan="2"><center>Harga Transaksi Perolehan/Pengalihan Hak</center></th>
                   <th colspan="2"><center>SPPT PBB</center></th>
                   <th colspan="2"><center>SSP</center></th>
@@ -51,6 +79,7 @@
                            <td>$r->p_mengalihkan_nama</td>
                            <td>$r->p_menerima_nama</td>
                            <td>$r->jenis_dan_nomor_hak</td>
+                           <td>$r->letak_tanah_dan_bangunan</td>
                            <td>$r->luas_tanah</td>
                            <td>$r->luas_bangunan</td>
                            <td>$r->harga_transaksi</td>
@@ -70,68 +99,22 @@
 						</table>
 					</div>
 					<hr>
-					<a href="../../menu/lihat_laporan" class="btn btn-success">Kembali</a>
-					<!-- <div class="col-xs-3">
-						<ul class="list-group">
-						  <li class="list-group-item">No Akta</li>
-						  <li class="list-group-item">Tanggal Akta</li>
-						  <li class="list-group-item">Bentuk Perbuatan Hukum</li>
-							<hr>
-						  <li class="list-group-item" style="background: #438eb9; color: #fff;">Pihak Yang Mengalihkan</li>
-						  <li class="list-group-item">Nama</li>
-						  <li class="list-group-item">Alamat</li>
-						  <li class="list-group-item">NPWP</li>
-							<hr>
-						  <li class="list-group-item" style="background: #438eb9; color: #fff;">Pihak Yang Menerima</li>
-						  <li class="list-group-item">Nama</li>
-						  <li class="list-group-item">Alamat</li>
-						  <li class="list-group-item">NPWP</li>
-							<hr>
-							<li class="list-group-item">Jenis dan Nomor Hak</li>
-							<li class="list-group-item">Letak Tanah dan Bangunan</li>
-						  <li class="list-group-item">Luas Tanah</li>
-						  <li class="list-group-item">Luas Bangunan</li>
-						  <li class="list-group-item">Harga Transaksi</li>
-						  <li class="list-group-item">NOP SPPT PBB</li>
-						  <li class="list-group-item">NJOP SPPT PBB</li>
-						  <li class="list-group-item">Tanggal</li>
-						  <li class="list-group-item">Nominal SSP</li>
-						  <li class="list-group-item">Tanggal SSPD BPHTB</li>
-						  <li class="list-group-item">Keterangan</li>
-							<hr>
-							<a href="../../menu/lihat_laporan" class="btn btn-success">Kembali</a>
-						</ul>
-					</div>
-					<div class="col-xs-9">
-						<?php foreach ($record as $r) {} ?>
-						<ul class="list-group">
-						  <li class="list-group-item"><?php echo $r->no_akta; ?></li>
-						  <li class="list-group-item"><?php echo $r->tgl_akta; ?></li>
-						  <li class="list-group-item"><?php echo $r->bentuk_perbuatan_hukum; ?></li>
-							<hr>
-							<li class="list-group-item" style="background: #438eb9; color: #fff;">Pihak Yang Mengalihkan</li>
-						 <li class="list-group-item"><?php echo $r->p_mengalihkan_nama; ?></li>
-						 <li class="list-group-item"><?php echo $r->p_mengalihkan_alamat; ?></li>
-						 <li class="list-group-item"><?php echo $r->p_mengalihkan_npwp; ?></li>
-						 <hr>
-						 <li class="list-group-item" style="background: #438eb9; color: #fff;">Pihak Yang Menerima</li>
-						 <li class="list-group-item"><?php echo $r->p_menerima_nama; ?></li>
-						 <li class="list-group-item"><?php echo $r->p_menerima_alamat; ?></li>
-						 <li class="list-group-item"><?php echo $r->p_menerima_npwp; ?></li>
-						 <hr>
-						 <li class="list-group-item"><?php echo $r->jenis_dan_nomor_hak; ?></li>
-						 <li class="list-group-item"><?php echo $r->letak_tanah_dan_bangunan; ?></li>
-						 <li class="list-group-item"><?php echo $r->luas_tanah; ?></li>
-						 <li class="list-group-item"><?php echo $r->luas_bangunan; ?></li>
-						 <li class="list-group-item"><?php echo $r->harga_transaksi; ?></li>
-						 <li class="list-group-item"><?php echo $r->sppt_pbb_nop_tahun; ?></li>
-						 <li class="list-group-item"><?php echo $r->sppt_ppb_njop; ?></li>
-						 <li class="list-group-item"><?php echo $r->ssp_tanggal; ?></li>
-						 <li class="list-group-item"><?php echo $r->ssp_nominal; ?></li>
-						 <li class="list-group-item"><?php echo $r->sspd_bphtb_tanggal; ?></li>
-						 <li class="list-group-item"><?php echo $r->keterangan; ?></li>
-						</ul>
-					</div> -->
+					<a href="../../menu/verifikasi_laporan" class="btn btn-success btn-sm">Kembali</a>
+					<a href="../aksi_terima/<?php echo $b->id; ?>" class="btn btn-primary btn-sm" style="color: #fff;">Terima</a>
+					<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#tolak">Tolak</button>
+				</div>
+				<div class="modal" id="tolak" tabindex="-1" role="dialog">
+				  <div class="modal-dialog" role="document">
+						<div class="modal-body">
+							<form action="../aksi_tolak/<?php echo $b->id; ?>" method="post">
+								<div class="form-group">
+									<input type="text" name="keterangan" size="62" placeholder="masukkan alasan / pesan kenapa ditolak ditolak" required="">
+								</div>
+									<button type="submit" class="btn btn-success btn-sm">Tolak</button>
+									<a href="../../menu/verifikasi_laporan" class="btn btn-danger btn-sm">Batal</a>
+							</form>
+						</div>
+				  </div>
 				</div>
 			</div>
 		</div>

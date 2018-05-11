@@ -14,7 +14,7 @@
           <ul class= 'submenu nav-show'  style='display: block;'></ul>
         </li>
         <li class='hsub '>
-          <a href="http://localhost/ppat/index.php/menu/lihat_laporan" data-original-title="Lihat Laporan PPAT" title="" data-placement="top" data-rel="tooltip"><i class="menu-icon fa fa-table"></i><span class="menu-text">Lihat Laporan</span></a>
+          <a href="http://localhost/ppat/index.php/menu/verifikasi_laporan" data-original-title="Verifikasi Laporan PPAT" title="" data-placement="top" data-rel="tooltip"><i class="menu-icon fa fa-table"></i><span class="menu-text">Verifikasi Laporan</span></a>
           <ul class= 'submenu'></ul>
         </li>
         <li class='hsub '><a href="http://localhost/ppat/index.php/menu/download_laporan" data-original-title="Download Laporan PPAT" title="" data-placement="top" data-rel="tooltip"><i class="menu-icon fa fa-download"></i><span class="menu-text">Download Laporan</span></a>

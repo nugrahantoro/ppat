@@ -31,6 +31,7 @@ class Contoh extends MY_Controller {
 			if ($sessData===false){
 				echo Modules::run('login');
 			} else {
+        $data['laporan']= $this->m_contoh->data_laporan()->result();
         $data['record']= $this->m_contoh->list_laporan($id)->result();
 				$this->load->view('v_detail',$data);
 			}
@@ -46,7 +47,10 @@ class Contoh extends MY_Controller {
         echo Modules::run('login');
       } else {
         $this->m_contoh->terima($id);
-        echo "<script>alert('Selesai!');history.go(-1);</script>";
+        echo "<script>
+            alert('Selesai!');
+            window.location.href='../../menu/verifikasi_laporan';
+            </script>";
       }
     } catch (Exception $e) {
       echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
@@ -60,7 +64,10 @@ class Contoh extends MY_Controller {
         echo Modules::run('login');
       } else {
         $this->m_contoh->tolak($id);
-        echo " <script>alert('Selesai!');history.go(-1);</script>";
+        echo "<script>
+            alert('Selesai!');
+            window.location.href='../../menu/verifikasi_laporan';
+            </script>";
       }
     } catch (Exception $e) {
       echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
