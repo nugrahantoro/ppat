@@ -175,38 +175,38 @@
               </div><!-- /.navbar-header -->
 
               <div class="navbar-header pull-right" role="navigation">
-                  <ul class="nav ace-nav">
+                <ul class="nav ace-nav">
 
-                      <li class="green">
-                          <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                              <i class="fa fa-user" style="font-size: 30px; margin-top: 5px">&nbsp;</i>
-                              <span class="user-info">
-                                  <small>Selamat Datang,</small>
-                                  <!-- <?php echo $displayname; ?> --> Petugas
-                              </span>
+                    <li class="green">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <i class="fa fa-user" style="font-size: 30px; margin-top: 5px">&nbsp;</i>
+                            <span class="user-info">
+                                <small>Selamat Datang,</small>
+                                <?php echo $displayname; ?>
+                            </span>
 
-                              <i class="fa fa-caret-down" style="margin-top:0px"></i>
-                          </a>
+                            <i class="fa fa-caret-down" style="margin-top:0px"></i>
+                        </a>
 
-                          <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                              <li>
-                                  <a href="#" class="baseactionbutton" data-params='{"username":"<?php echo $username?>"}'>
-                                      <i class="fa fa-lock"></i>
-                                      Change Password
-                                  </a>
-                              </li>
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#" class="baseactionbutton" data-params='{"username":"<?php echo $username?>"}'>
+                                    <i class="fa fa-lock"></i>
+                                    Change Password
+                                </a>
+                            </li>
 
-                              <li>
-                                  <a href="<?php echo site_url('login/logout')?>">
-                                      <i class="fa fa-power-off"></i>
-                                      Logout
-                                  </a>
-                              </li>
-                          </ul>
-                      </li>
+                            <li>
+                                <a href="<?php echo site_url('login/logout')?>">
+                                    <i class="fa fa-power-off"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                  </ul>
-                  <?php echo $userinfo;?>
+                </ul>
+                <?php echo $userinfo;?>
               </div><!-- /.navbar-header -->
           </div><!-- /.container -->
       </div>

@@ -113,41 +113,41 @@
                     </script>
                 </div>
 
-				 <?php include_once 'aceadmin'.'/theme_bottom.php' ?>
+        				 <?php include_once 'aceadmin'.'/theme_bottom.php' ?>
 
-        <script type="text/javascript" src="<?php echo $basedir; ?>libs/bsmodal/js/bootstrap-modal.js"></script>
-        <script type="text/javascript" src="<?php echo $basedir; ?>libs/bsmodal/js/bootstrap-modalmanager.js"></script>
+                <script type="text/javascript" src="<?php echo $basedir; ?>libs/bsmodal/js/bootstrap-modal.js"></script>
+                <script type="text/javascript" src="<?php echo $basedir; ?>libs/bsmodal/js/bootstrap-modalmanager.js"></script>
 
-        <script src="<?php echo $libsurl; ?>kslibs/js/mgcrud.js"></script>
-        <script src="<?php echo $libsurl; ?>jqvalidation/jquery.validate.js"></script>
+                <script src="<?php echo $libsurl; ?>kslibs/js/mgcrud.js"></script>
+                <script src="<?php echo $libsurl; ?>jqvalidation/jquery.validate.js"></script>
 
 
-                <div class="main-content">
+                        <div class="main-content">
 
-                    <div class="page-content" id="page-content">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="testing1"></div>
-                                <!-- PAGE CONTENT BEGINS -->
-                                <?php echo $pagecontent ?>
+                            <div class="page-content" id="page-content">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="testing1"></div>
+                                        <!-- PAGE CONTENT BEGINS -->
+                                        <?php echo $pagecontent ?>
 
-		<?php if ($this->uri->segment(2)=='home') { ?>
-                                <div align="center" style="margin-top:250px;">
-								<h2><font style="color:#6699FF">Selamat datang,</font>  <br>di Aplikasi Back Office <?php echo NAMA_APLIKASI;?></h2>
+        		<?php if ($this->uri->segment(2)=='home') { ?>
+                                        <div align="center" style="margin-top:250px;">
+        								<h2><font style="color:#6699FF">Selamat datang,</font>  <br>di Aplikasi Back Office <?php echo NAMA_APLIKASI;?></h2>
 
-								<button data-toggle="button" class="btn btn-primary" type="button"><?php echo date("d-M-Y"); ?></button>
-								</div>
-								<?php } ?>
+        								<button data-toggle="button" class="btn btn-primary" type="button"><?php echo date("d-M-Y"); ?></button>
+        								</div>
+        								<?php } ?>
 
-                                <!-- PAGE CONTENT ENDS -->
-                            </div><!-- /.col -->
-				<div id="modal_jabatan" class="modal" tabindex="-1" style="position:fixed;top:10%;margin-left:-500px;display:none;font-size:12px;width:1024px">
+                                        <!-- PAGE CONTENT ENDS -->
+                                    </div><!-- /.col -->
+        				<div id="modal_jabatan" class="modal" tabindex="-1" style="position:fixed;top:10%;margin-left:-500px;display:none;font-size:12px;width:1024px">
 
-				</div><!--PAGE CONTENT ENDS-->
-				<div id="lyar-mask" class="modal-backdrop" style="display:none;"></div>
-                        </div><!-- /.row -->
-                    </div><!-- /.page-content -->
-                </div><!-- /.main-content -->
+        				</div><!--PAGE CONTENT ENDS-->
+        				<div id="lyar-mask" class="modal-backdrop" style="display:none;"></div>
+                                </div><!-- /.row -->
+                            </div><!-- /.page-content -->
+                        </div><!-- /.main-content -->
 
 
             </div><!-- /.main-container-inner -->

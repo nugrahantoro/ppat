@@ -13,7 +13,7 @@
 						<?php foreach ($laporan as $b) {} ?>
 						<table>
 							<tr>
-								<td class="alert alert-info">No PPATK</td>
+								<td class="alert alert-info">No SK PPATK</td>
 								<td class="alert alert-info">:</td>
 								<td class="alert alert-info"><?php echo $b->no_sk_ppat; ?></td>
 							</tr>
@@ -108,10 +108,10 @@
 						<div class="modal-body">
 							<form action="../aksi_tolak/<?php echo $b->id; ?>" method="post">
 								<div class="form-group">
-									<input type="text" name="keterangan" size="62" placeholder="masukkan alasan / pesan kenapa ditolak ditolak" required="">
+									<input type="text" name="keterangan" size="62" placeholder="masukkan alasan / pesan kenapa ditolak" required="">
 								</div>
 									<button type="submit" class="btn btn-success btn-sm">Tolak</button>
-									<a href="../../menu/verifikasi_laporan" class="btn btn-danger btn-sm">Batal</a>
+									<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Batal</button>
 							</form>
 						</div>
 				  </div>

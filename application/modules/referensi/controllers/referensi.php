@@ -15,8 +15,8 @@ class Referensi extends MY_Controller {
     public function index() {
 		 echo Modules::run('login');
     }
-	
-	function tampil($category, $wfname){
+
+	function tampil(){
 		try {
             $sessData = $this->checkSessionData();
             if ($sessData===false){
@@ -25,9 +25,9 @@ class Referensi extends MY_Controller {
 				$this->load->model('menu/m_menu', 'mmenu');
 				$username = $sessData['username'];
                 $this->updateSysParamsUserInfo($username);
-				
+
 				$data = $this->mmenu->getDefaultData();
-		
+
 				$ctmenu = $this->mmenu->getViewMainMenu();
 				$query = $this->referensi->tabel_list(0,null,null,null,null);
 				$data['result'] = $query;
@@ -39,7 +39,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
     }
-	
+
 	function form_tabel()
 	{
 		try {
@@ -50,11 +50,11 @@ class Referensi extends MY_Controller {
 				$this->load->model('menu/m_menu', 'mmenu');
 				$username = $sessData['username'];
                 $this->updateSysParamsUserInfo($username);
-				
+
 				$data = $this->mmenu->getDefaultData();
-		
+
 				$ctmenu = $this->mmenu->getViewMainMenu();
-	
+
 				$data['mainmenu'] = $ctmenu['view'];
 				$data['form'] = $this->uri->segment(3);
 				$this->load->view('data/form', $data);
@@ -63,7 +63,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function simpan_tabel()
 	{
 		$tabel = 'ref_'.strtolower(str_replace(' ','_',trim($this->input->post('tabel'))));
@@ -81,10 +81,10 @@ class Referensi extends MY_Controller {
 			$data['status'] = 'sukses';
 			$data['msg'] ='Tabel berhasil dibuat!';
 		}
-		
+
 		echo json_encode($data);
 	}
-	
+
 	function delete_tabel()
 	{
 		$tabel = $this->uri->segment(3);
@@ -92,10 +92,10 @@ class Referensi extends MY_Controller {
 		$this->db->query($sql2);
 		$data['status'] = 'sukses';
 		$data['msg'] ='Tabel berhasil dihapus!';
-		
+
 		echo json_encode($data);
 	}
-	
+
 	function list_tabel()
 	{
 		try {
@@ -114,7 +114,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function add_tabel()
 	{
 		try {
@@ -139,7 +139,7 @@ class Referensi extends MY_Controller {
 					$data['cr']= str_replace('%20',' ',$cr);
 					$sqlCari .= " AND nama LIKE '%".str_replace('%20',' ',$cr)."%'";
 				}
-			
+
 				$query = $this->referensi->data_list(1,$limited,$offset,null,$sqlCari,$tabel);
 				$jum_data = $this->referensi->data_list(0,null,null,null,$sqlCari,$tabel);
 				$this_url = '/referensi/add_tabel/'.$tabel.'/';
@@ -158,7 +158,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function add_form()
 	{
 		try {
@@ -186,7 +186,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function simpan_data()
 	{
 		$tabel = $this->uri->segment(3);
@@ -203,7 +203,7 @@ class Referensi extends MY_Controller {
 							'nama' => trim($nama)
 						);
 				$this->db->insert($tabel,$dataIn);
-				
+
 				$data['status'] = 'sukses';
 				$data['msg'] = 'Data berjasil disimpan!';
 			}
@@ -232,10 +232,10 @@ class Referensi extends MY_Controller {
 				}
 			}
 		}
-		
+
 		echo json_encode($data);
 	}
-	
+
 	function delete_data()
 	{
 		$tabel = $this->uri->segment(3);
@@ -247,7 +247,7 @@ class Referensi extends MY_Controller {
 
 		echo json_encode($data);
 	}
-	
+
 	function form_provinsi()
 	{
 		try {
@@ -271,7 +271,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function simpan_provinsi()
 	{
 		$id = $this->input->post('id');
@@ -333,7 +333,7 @@ class Referensi extends MY_Controller {
 		}
 		echo json_encode($data);
 	}
-	
+
 	function delete_provinsi()
 	{
 		try {
@@ -358,7 +358,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function form_kabkot()
 	{
 		try {
@@ -382,7 +382,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function simpan_kabkot()
 	{
 		$id = $this->input->post('id');
@@ -444,7 +444,7 @@ class Referensi extends MY_Controller {
 		}
 		echo json_encode($data);
 	}
-	
+
 	function delete_kabkot()
 	{
 		try {
@@ -469,7 +469,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function getProv()
 	{
 		$id=$this->uri->segment(3);
@@ -480,7 +480,7 @@ class Referensi extends MY_Controller {
 		}
 		echo json_encode($out);
 	}
-	
+
 	function getKot()
 	{
 		$id=$this->uri->segment(3);
@@ -492,7 +492,7 @@ class Referensi extends MY_Controller {
 		}
 		echo json_encode($out);
 	}
-	
+
 	function form_kecamatan()
 	{
 		try {
@@ -516,7 +516,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function simpan_kecamatan()
 	{
 		$id = $this->input->post('id');
@@ -579,7 +579,7 @@ class Referensi extends MY_Controller {
 		}
 		echo json_encode($data);
 	}
-	
+
 	function delete_kecamatan()
 	{
 		try {
@@ -604,7 +604,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function form_kelurahan()
 	{
 		try {
@@ -628,7 +628,7 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
+
 	function simpan_kelurahan()
 	{
 		$id = $this->input->post('id');
@@ -692,7 +692,7 @@ class Referensi extends MY_Controller {
 		}
 		echo json_encode($data);
 	}
-	
+
 	function delete_kelurahan()
 	{
 		try {
@@ -740,24 +740,24 @@ class Referensi extends MY_Controller {
             echo $e->getMessage() . "\r\n" . $e->getTraceAsString();
         }
 	}
-	
-	function getKel($id_kec){		
+
+	function getKel($id_kec){
 		$sql = $this->db->query("
-					select 
-						ref_desa.id, 
+					select
+						ref_desa.id,
 						ref_desa.nama
 					from ref_desa
 					JOIN ref_kecamatan ON ref_desa.kode_kec = ref_kecamatan.kode
-					where ref_kecamatan.id ='".$id_kec."' 
+					where ref_kecamatan.id ='".$id_kec."'
 					order by ref_desa.nama ASC");
-		
+
 		$out = "<option value=\"\">- Pilih -</option>";
 		foreach($sql->result() as $row){
 			$out .= "<option value=\"".$row->id."\">".$row->nama."</option>";
 		}
 		echo json_encode($out);
 	}
-	
+
 	function simpan_suspend_persil(){
 		$id = $this->input->post('id');
 		$ref_kecamatan_id = $this->input->post('ref_kecamatan_id');
@@ -784,7 +784,7 @@ class Referensi extends MY_Controller {
 				$data['success']=1;
 				$data['message']='Data berhasil disimpan.';
 			}else{
-			
+
 					$dataIn = array (
 							'ref_kecamatan_id' => $ref_kecamatan_id,
 							'ref_desa_id' => $ref_desa_id,
@@ -795,12 +795,12 @@ class Referensi extends MY_Controller {
 					$this->db->update('data_suspend_persil',$dataIn);
 					$data['success']=1;
 					$data['message']='Data berhasil diubah.';
-				
+
 			}
 		}
 		echo json_encode($data);
 	}
-	
+
 	function delete_suspend_persil(){
 		try {
             $sessData = $this->checkSessionData();
@@ -826,7 +826,7 @@ class Referensi extends MY_Controller {
 	}
 
 
-	
+
 	}
 
 /* End of file welcome.php */
