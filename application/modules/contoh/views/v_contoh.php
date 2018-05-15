@@ -34,7 +34,7 @@
 								 <td>$r->status</td>
 								 <td>
 									 <a href='../contoh/tampil_data/$r->id' class='btn btn-warning btn-sm' style='color: #fff;'>Lihat</a>
-									 <a href='../contoh/aksi_terima/$r->id' class='btn btn-primary btn-sm' style='color: #fff;'>Terima</a>
+									 <a href='#' class='btn btn-primary btn-sm' style='color: #fff;' data-toggle='modal' data-target='#terima'>Terima</a>
 									 <a href='#' class='btn btn-danger btn-sm' style='color: #fff;' data-toggle='modal' data-target='#tolak'>Tolak</a>
 								 </td>
 					 </tr>";
@@ -45,12 +45,24 @@
 		</table>
 	</div>
 
+	<div class="modal" id="terima" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-body">
+				<form action="../contoh/aksi_terima/<?php echo $r->id; ?>" method="post">
+					<p>Apakah yakin ingin menerima?</p>
+						<button type="submit" class="btn btn-success btn-sm">Ya</button>
+						<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Batal</button>
+				</form>
+			</div>
+		</div>
+	</div>
 	<div class="modal" id="tolak" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-body">
-				<form action="../contoh/aksi_tolak/<?php echo $b->id; ?>" method="post">
+				<form action="../contoh/aksi_tolak/<?php echo $r->id; ?>" method="post">
 					<div class="form-group">
-						<input type="text" name="keterangan" size="62" placeholder="masukkan alasan / pesan kenapa ditolak" required="">
+						<label>Keterangan ditolak :</label>
+						<textarea name="keterangan" rows="3" cols="61" required=""></textarea>
 					</div>
 						<button type="submit" class="btn btn-success btn-sm">Tolak</button>
 						<!-- <a href="../menu/verifikasi_laporan" class="btn btn-danger btn-sm">Batal</a> -->
