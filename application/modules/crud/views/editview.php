@@ -6,16 +6,16 @@ if (!defined('BASEPATH'))
  * Simple PHP Application Development
  * Kusnassriyanto S. Bahri
  * kusnassriyanto@gmail.com
- * 
+ *
  */
 ?>
 <style>
-    div#color_selector 
+    div#color_selector
 {
-   z-index: 1120; 
+   z-index: 1120;
 }
 .colorpicker {
-    z-index: 1220; 
+    z-index: 1220;
 }
     .pagination {
         margin-top: 5px;
@@ -59,13 +59,13 @@ if (!defined('BASEPATH'))
 <div class="row" style="background-color:rgb(239, 243, 248); padding-top: 8px; padding-left:5px; padding-right: 5px; padding-bottom: 10px">
     <div class="col-xs-12 col-sm-12">
         <?php echo $crudparams; ?>
-    </div>                                                                    
+    </div>
 </div>
 <div class="row" style="">
     <div class="pull-left command-container" >
         <button data-dismiss="modal" id="canceledit" class="btn btn-default btn-sm" style="margin-top:20px;">Cancel</button>
         <button id="crudexecute" class="btn btn-info btn-sm crudexecute" style="margin-top:20px;">OK</button>
-    </div>                                                                    
+    </div>
 </div>
 </form>
 
@@ -74,7 +74,7 @@ if (!defined('BASEPATH'))
 </div>
 <script>
     var validationRules = {};
-    
+
     <?php if(isset($scriptdata)) {
         echo $scriptdata;
     }
@@ -83,7 +83,7 @@ if (!defined('BASEPATH'))
 </script>
 
 <script>
-    
+
     $.validator.setDefaults({
         submitHandler: function() {
 			$('#loadings').css('display','block');
@@ -91,7 +91,7 @@ if (!defined('BASEPATH'))
                 groupClass: "crud-group",
                 'url': '<?php echo $crudurl . 'svexecdata/' . $crudname . '/' . $actionname; ?>',
                 onsuccess: function(data){
-		
+
                     //alert('sukses');
                     $('#ajax-modalnormal').attr('data-modalresult', 1);
                     $('#ajax-modalnormal').modal('hide');
@@ -113,32 +113,32 @@ if (!defined('BASEPATH'))
             //alert("submitted!");
         }
     });
-    
+
     validate_option = {
         rules: validationRules
     };
     //validate_option['rules'] = validationRules;
-    $("#edit-form").validate(validate_option);    
-    
+    $("#edit-form").validate(validate_option);
+
     $('#testing').click(function(event){
         console.log("testing");
         //event.preventDefault();
         //$('#confirmpassword').setCustomValidity("Testing");
         //var validator = $( "#edit-form" ).validate();
-        //validator.form();        
-        
+        //validator.form();
+
     });
-    
+
         $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
             $(this).prev().focus();
         });
-        
+
         $('#cp1').colorpicker({
             format: 'hex'
         });
-    
-    
-    
+
+
+
 //alert('xxxxx');
 //$('.date-picker').each(function(){
 //    console.log('pck-xxx');
@@ -146,17 +146,17 @@ if (!defined('BASEPATH'))
 ////alert('xxx');
 //        $('.date-picker').datepicker({
 //            //autoclose:false,
-//            beforeShow: function() { 
+//            beforeShow: function() {
 //                alert("1234");
-//                $('.datepicker').css("z-index", 1051); 
+//                $('.datepicker').css("z-index", 1051);
 //            }
 //        }).next().on(ace.click_event, function(){
 //            //alert("xxxxx");
 //            $(this).prev().focus();
 //        });
-    
-    
-    
+
+
+
     //OnReadyArray.push(function(){
 //        console.log("edit-view");
 //        $('.crudexecute').click(function(){
@@ -196,8 +196,8 @@ if (!defined('BASEPATH'))
 //            return false;
 //        })
 //    //});
-//    
-    
+//
+
     //OnReadyArray.push(function(){
     console.log('testing');
     console.log($('.lookup-refresh').length);
@@ -227,36 +227,36 @@ if (!defined('BASEPATH'))
                 });
                 //x = 'test1, test2, test3';
                 //console.log((x.split(', ')));
-                
+
             }
         });
     //});
-    
+
     $('.cbox_check_all').click(function(){
         console.log(this);
         inputid = $(this).attr('data-inputid');
         Manggu.Crud.checkBoxAll(inputid, 'all');
     });
-    
+
     $('.cbox_check_none').click(function(){
         console.log(this);
         inputid = $(this).attr('data-inputid');
         Manggu.Crud.checkBoxAll(inputid, 'none');
     });
-    
+
     $('.cbox_check_toggle').click(function(){
         console.log(this);
         inputid = $(this).attr('data-inputid');
         Manggu.Crud.checkBoxAll(inputid, 'toggle');
     });
-    
+
     console.log("check-chosen");
     $('.chosen-select').each(function(){
         console.log("xxx--1");
     });
     console.log($('.chosen-select'));
-    
+
     $('.chosen-select').chosen({allow_single_deselect:true});
-    
-    
-</script>    
+
+
+</script>

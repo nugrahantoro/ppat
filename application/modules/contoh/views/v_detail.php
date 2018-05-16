@@ -116,14 +116,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal" id="tolak" tabindex="-1" role="dialog">
+				<div id="tolak" class="modal container fade" tabindex="-1" style="display: none; " data-width="600">
 				  <div class="modal-dialog" role="document">
 						<div class="modal-body">
 							<form action="../aksi_tolak/<?php echo $b->id; ?>" method="post">
 								<div class="form-group">
 									<!-- <input type="text" name="keterangan" size="62" placeholder="masukkan alasan / pesan kenapa ditolak" required=""> -->
 									<label>Keterangan ditolak :</label>
-									<textarea name="keterangan" rows="3" cols="61" required=""></textarea>
+									<textarea class="form-control" name="keterangan" rows="3" required=""></textarea>
 								</div>
 									<button type="submit" class="btn btn-success btn-sm">Tolak</button>
 									<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Batal</button>

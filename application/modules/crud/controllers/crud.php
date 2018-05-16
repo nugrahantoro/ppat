@@ -7,7 +7,7 @@ if (!defined('BASEPATH'))
  * Simple PHP Application Development
  * Kusnassriyanto S. Bahri
  * kusnassriyanto@gmail.com
- * 
+ *
  */
 
 class Crud extends MY_Controller {
@@ -22,13 +22,13 @@ class Crud extends MY_Controller {
     public function _xremap($methodname){
         $this->openCrud($methodname);
     }
-    
+
     public function index($crudname, $actionname='browse'){
 //        echo "*****";
 //        echo $crudname;
 //        die;
         $this->load->model('m_crud', 'mcrud');
-        
+
         $sessData = $this->checkSessionData();
         if ($sessData===false){
             //echo "***";
@@ -45,7 +45,7 @@ class Crud extends MY_Controller {
                 $this->mcrud->showCrud($crudname, $actionname);
             } else {
                 show_404();
-            }       
+            }
         }
 //        $ctparams = $this->mcrud->getViewDataParams($crudname);
 //        //print_r($ctparams);
@@ -55,12 +55,12 @@ class Crud extends MY_Controller {
 //            } else {
 //                echo $ctparams['view'];
 //            }
-//            
+//
 //        } else {
 //            print_r($ctparams);
 //        }
     }
-    
+
     public function command($crudname, $actionname){
         $this->load->model('m_crud', 'mcrud');
         $sessData = $this->checkSessionData();
@@ -82,7 +82,7 @@ class Crud extends MY_Controller {
             }
         }
     }
-    
+
     public function command2($crudname, $actionname){
         $this->load->model('m_crud', 'mcrud');
         $sessData = $this->checkSessionData();
@@ -92,11 +92,11 @@ class Crud extends MY_Controller {
         } else {
 		if($actionname == 'reject'){
 			if($_POST['next_taskname'] == 'validasi_bidang'){
-				$rr = $this->db->query("SELECT * FROM tr_log_proses WHERE 
-											workflowid = '".$_POST['workflowid']."' 
-											AND next_taskname = 'validasi_bidang' 
+				$rr = $this->db->query("SELECT * FROM tr_log_proses WHERE
+											workflowid = '".$_POST['workflowid']."'
+											AND next_taskname = 'validasi_bidang'
 											ORDER BY date_proses DESC LIMIT 1 ")->row();
-				$ct = $rr->catatan;							
+				$ct = $rr->catatan;
 			}else if($_POST['next_taskname'] == 'persetujuan_bidang'){
 				$dt = json_decode($_POST['workflowdata']);
 				//var_dump($dt);die;
@@ -137,13 +137,13 @@ class Crud extends MY_Controller {
 		echo $result;
         }
     }
-    
+
     public function openCrud($crudname){
         $this->load->model('m_crud', 'mcrud');
         $ctparams = $this->mcrud->getViewDataParams($crudname);
         //print_r($ctparams);
     }
-    
+
     public function recview($crudname, $actionname='recordview'){
         //echo "test";
         $this->load->model('m_crud', 'mcrud');
@@ -156,7 +156,7 @@ class Crud extends MY_Controller {
             $this->mcrud->showRecord('base', 'construction');
         }
     }
-    
+
     public function svqueryview($crudname, $actionname){
         try {
             $this->load->model('login/m_login', 'mlogin');
@@ -224,7 +224,7 @@ class Crud extends MY_Controller {
         }
         echo json_encode($result);
     }
-    
+
     public function svlookup($lookupname){
         try {
             $this->load->model('login/m_login', 'mlogin');
@@ -292,7 +292,7 @@ class Crud extends MY_Controller {
                 $ludata = $this->mcrud->getDataLookup($lookupname, $params);
                 $result = $this->mcrud->formatViewLookup($ludata, $value);
                 //print_r($ludata);
-                
+
                 //$ludata['lookupname'] = $lookupname;
                 //$ludata['success'] = 1;
                 //$result = $ludata;
@@ -328,6 +328,6 @@ class Crud extends MY_Controller {
         }
         echo json_encode($result);
     }
-    
+
 }
 ?>

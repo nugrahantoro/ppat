@@ -77,7 +77,6 @@
 
   <div class="main-content">
 
-
   </div><!-- /.col -->
 
   <div id="modal_jabatan" class="modal" tabindex="-1" style="position:fixed;top:10%;margin-left:-500px;display:none;font-size:12px;width:1024px">

@@ -4,7 +4,7 @@
  * Simple PHP Application Development
  * Kusnassriyanto S. Bahri
  * kusnassriyanto@gmail.com
- * 
+ *
  */
 
 class M_crud extends MY_Model
@@ -21,7 +21,7 @@ class M_crud extends MY_Model
         parent::__construct();
         $this->load->library('user_agent');
     }
-    
+
     function loadCrudFile($crudname, $actionname){
         $this->crudName = $crudname;
         $this->actionName = $actionname;
@@ -32,11 +32,11 @@ class M_crud extends MY_Model
             $this->crudData['grouplist'] = $this->getGroupDefault();
         }
     }
-    
+
     public function showCrud($crudname, $actionname){
         $this->loadCrudFile($crudname, $actionname);
         $data = $this->getDefaultCrudData();
-        
+
         $data['crudtitle'] = $this->getCrudTitle();
         if(isset($this->crudData['defaultparamtype'])){
             $defpartype = $this->crudData['defaultparamtype'];
@@ -59,7 +59,7 @@ class M_crud extends MY_Model
         $result = $this->load->view('crud/baseview', $data, true);
         echo $result;
     }
-    
+
     public function showCommand($crudname, $actionname){
         $this->loadCrudFile($crudname, $actionname);
         $data = $this->getDefaultCrudData();
@@ -67,10 +67,10 @@ class M_crud extends MY_Model
        // print_r($this->crudData);
 
         $data['crudtitle'] = $this->getCrudTitle().(isset($this->crudData['title-name'])?(($this->crudData['title-name']=='username')?' <b>('.$_POST['fullname'].')</b>':''):'');
-        
+
         $data['crudmessage'] = getArrayDef($this->crudData, 'message', '');
         //$data['crudmessage'] = getArrayDef($this->crudData, 'message', '');
-        
+
         if(isset($this->crudData['defaultparamtype'])){
             $defpartype = $this->crudData['defaultparamtype'];
         } else {
@@ -82,7 +82,7 @@ class M_crud extends MY_Model
         $data['crudparams'] = $ctparams['view'];
         //$params = $this->getDefaultParams();
         //print_r($params);
-        
+
         //$data['editcommands'] = $qdata['crudcommands'];
         $data['crudname'] = $crudname;
         $data['actionname'] = $actionname;
@@ -91,7 +91,7 @@ class M_crud extends MY_Model
                 $text = $this->getTextFile($crudname.'/'.$this->crudData['scriptfile']);
                 $text = $text."\r\n";
             } catch(Exception $e) {
-                
+
                 $text = '//'.$e->getMessage();
             }
             $data['scriptdata'] = $text;
@@ -100,13 +100,13 @@ class M_crud extends MY_Model
         $result = $this->load->view('crud/editview', $data, true);
         echo $result;
     }
-    
+
     public function showCommand2($crudname, $actionname){
 
         $this->loadCrudFile($crudname, $actionname);
         $data = $this->getDefaultCrudData();
         $data['crudtitle'] = $this->getCrudTitle().(isset($this->crudData['title-name'])?(($this->crudData['title-name']=='username')?' <b>('.$_POST['fullname'].')</b>':''):'');
-        
+
         $data['crudmessage'] = getArrayDef($this->crudData, 'message', '');
         if(isset($this->crudData['defaultparamtype'])){
             $defpartype = $this->crudData['defaultparamtype'];
@@ -123,7 +123,7 @@ class M_crud extends MY_Model
                 $text = $this->getTextFile($crudname.'/'.$this->crudData['scriptfile']);
                 $text = $text."\r\n";
             } catch(Exception $e) {
-                
+
                 $text = '//'.$e->getMessage();
             }
             $data['scriptdata'] = $text;
@@ -131,7 +131,7 @@ class M_crud extends MY_Model
         $result = $this->load->view('crud/editview2', $data, true);
         echo $result;
     }
-    
+
     public function showRecord($crudname, $actionname){
         $this->loadCrudFile($crudname, $actionname);
         $data = $this->getDefaultRecviewData();
@@ -139,15 +139,15 @@ class M_crud extends MY_Model
         //print_r($this->crudData);
 
         $data['rectitle'] = $this->getCrudTitle();
-        
+
         $data['recmessage'] = getArrayDef($this->crudData, 'message', '');
-        
+
         $data['options'] = getArrayDef($this->crudData, 'options', array());
-        
+
         if(isset($this->crudData['editlist'])){
             $this->crudData['paramlist'] = $this->crudData['editlist'];
         }
-        
+
         if(isset($this->crudData['defaultparamtype'])){
             $defpartype = $this->crudData['defaultparamtype'];
         } else {
@@ -175,7 +175,7 @@ class M_crud extends MY_Model
         $result = $this->load->view('crud/recordview', $data, true);
         echo $result;
     }
-    
+
     function getDefaultCrudData(){
         $result = array();
         $result['crudurl'] = $this->getMainUrl('crud');
@@ -189,7 +189,7 @@ class M_crud extends MY_Model
         $result['cmdscripts'] = '<div >cmdscripts</div>';
         return $result;
     }
-    
+
     function getDefaultRecviewData(){
         $result = array();
         $result['crudurl'] = $this->getMainUrl('crud');
@@ -201,7 +201,7 @@ class M_crud extends MY_Model
         $result['recdetails'] = '';
         return $result;
     }
-    
+
     function getCrudTitle(){
         if (isset($this->crudData['title'])){
 			$result = $this->crudData['title'];
@@ -210,7 +210,7 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function getDefaultParams($defpartype='none'){
         if (isset($this->crudData['paramlist'])){
             $result = array();
@@ -246,7 +246,7 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function getDefaultParamQuery($params){
         $result = array();
         if (isset($this->crudData['sqldefparam'])){
@@ -259,7 +259,7 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function executeData($command, $params){
         $result = array();
         if (isset($this->crudData[$command])){
@@ -295,11 +295,11 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function getDataParams($elclass='', $defparams=array()){
         //$folder = $this->ci->config->item('basefolder').'crud';
         //$filename = $folder.'/'.$crudname;
-        
+
         //$fieldtypes = $this->getJsonFile('fieldtypes', 'list');
         //$cruddata = $this->getJsonFile($crudname);
         if ($elclass===''){
@@ -327,7 +327,7 @@ class M_crud extends MY_Model
             if (!isset($resitem['xtype'])){
                 $resitem['xtype'] = 'text';
             }
-            if (($resitem['xtype']=='lookup') or ($resitem['xtype']=='lookup-disable') 
+            if (($resitem['xtype']=='lookup') or ($resitem['xtype']=='lookup-disable')
                 or ($resitem['xtype']=='checklistbox')){
                 if (isset($resitem['lookupname'])){
                     $lookupname = $resitem['lookupname'];
@@ -354,7 +354,7 @@ class M_crud extends MY_Model
                     if ($paramlist!==''){
                         $resitem['lookup-paramlist'] = $paramlist;
                     }
-                    //$value = 
+                    //$value =
                     if (($resitem['xtype']=='lookup') or ($resitem['xtype']=='lookup-disable')){
                         $ludata = $this->getViewLookup($lookupname, $params, $value);
                     } else {
@@ -370,7 +370,7 @@ class M_crud extends MY_Model
             } else {
                 $resitem['class'] = $elclass;
             }
-            
+
             if(isset($resitem['lookup-refresh'])){
                 $resitem['class'] = $resitem['class'].' lookup-refresh';
             }
@@ -380,7 +380,7 @@ class M_crud extends MY_Model
         //print_r($result);
         return $result;
     }
-    
+
     function formatViewParams($dataparams){
         //return $dataparams;
         $dataparams = $this->groupingFieldList($dataparams);
@@ -389,7 +389,7 @@ class M_crud extends MY_Model
         $result = $this->load->view('crud/formelements', $data, true);
         return $result;
     }
-    
+
     function getGroupDefault(){
         $result = array(
             'group_a' => array('groupname'=>'group_a', 'xtype'=>'column', 'class'=>'col-sm-12 col-md-12 col-lg-12 datapanel'),
@@ -469,10 +469,10 @@ class M_crud extends MY_Model
             'group_x12_3' => array('groupname'=>'group_x12_3', 'xtype'=>'column', 'class'=>'col-sm-12 col-md-12 col-lg-12 datapanel'),
             'group_x12_4' => array('groupname'=>'group_x12_4', 'xtype'=>'column', 'class'=>'col-sm-12 col-md-12 col-lg-12 datapanel'),
         );
-        
+
         return $result;
     }
-    
+
     function getGroupInfo($groupName){
         $groupDefault = array('groupname'=>$groupName, 'xtype'=>'column', 'class'=>'col-sm-6 col-md-4 col-lg-4');
         if (isset($this->crudData['grouplist'][$groupName])){
@@ -483,7 +483,7 @@ class M_crud extends MY_Model
         $result = array_merge($groupDefault, $result);
         return $result;
     }
-    
+
     function groupingFieldList($fieldlist){
         //print_r($fieldlist);
 
@@ -504,7 +504,7 @@ class M_crud extends MY_Model
                 array_push($arrGroupContent[$groupName], $item);
             }
         }
-        
+
         $result = array();
         array_push($result, array('xtype'=>'row'));
         foreach($arrGroup as $item){
@@ -520,14 +520,14 @@ class M_crud extends MY_Model
         //print_r($result);
         return $result;
     }
-    
+
     function getViewDataParams($elparams='', $defparams=array()){
         $data = $this->getDataParams($elparams, $defparams);
         $view = $this->formatViewParams($data);
         $result = array('view'=>$view);
         return $result;
     }
-    
+
     function getDataLookup($lookupname, $params){
         $config = $this->getJsonFile('lookup/'.$lookupname, 'lookup');
         if (!isset($config['lookuptype'])){
@@ -548,9 +548,9 @@ class M_crud extends MY_Model
         //$vsql = $config['sql'];
         //$qresult = $this->mdb->QueryData('application', $vsql, $params, 'record');
         return $result;
-        
+
     }
-    
+
     function formatViewLookup($datalookup, $defvalue=''){
         $result = '';
         foreach($datalookup as $item){
@@ -573,14 +573,14 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function getViewLookup($lookupname, $params, $curvalue){
         $data = $this->getDataLookup($lookupname, $params);
         $view = $this->formatViewLookup($data, $curvalue);
         $result = array('view'=>$view);
         return $result;
     }
-    
+
     function getDataGrid($params){
         $sql = $this->crudData['sql'];
         if (isset($params['pagerec'])){
@@ -593,13 +593,13 @@ class M_crud extends MY_Model
         } else {
             $pagenum = 0;
         }
-        
+
         if (isset($this->crudData['sqlcount'])){
             $sqlcount = $this->crudData['sqlcount'];
         } else {
             $sqlcount = 'select count(*) from ( '.$sql.') x';
         }
-        
+
         $datasql = $this->mdb->QueryData('application', $sql, $params, 'record');
         $datacount = $this->mdb->QueryData('application', $sqlcount, $params, 'matrix');
         //print_r($datacount);
@@ -608,7 +608,7 @@ class M_crud extends MY_Model
         } else {
             $qcount = 0;
         }
-        
+
         //print_r($this->crudData['fieldlist']);
         $actualcount = count($datasql);
         $datastart = ($pagenum-1)*$pagerec+1;
@@ -617,10 +617,10 @@ class M_crud extends MY_Model
         //$pagination = $this->calcPagination($pagerec, $pagenum, $qcount);
         $result = array('data'=>$datasql, 'count'=>$qcount, 'pagerec'=>$pagerec, 'pagenum'=>$pagenum,
             'actualcount'=>$actualcount, 'gridinfo'=>$gridinfo);
-        
+
         return $result;
     }
-    
+
     function xformatViewGrid($datagrid){
         if (isset($this->crudData['rowactions'])){
             $rowactposition = getArrayDef($this->crudData['rowactions'], 'position', 'right');
@@ -628,12 +628,12 @@ class M_crud extends MY_Model
         } else {
             $rowactposition = 'none';
         }
-        $data = array('rowactposition'=>$rowactposition, 'tdoptions'=>$tdoptions, 
+        $data = array('rowactposition'=>$rowactposition, 'tdoptions'=>$tdoptions,
             'cruddata'=>$this->crudData,
             'datagrid'=>$datagrid);
         $result = $this->load->view('gridview', $data, true);
     }
-    
+
     function getConditionField($row, $field, $value){
         if (isset($field['valuelist'][$value])){
             $result = $field['valuelist'][$value];
@@ -644,7 +644,7 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function formatViewGrid($datagrid){
 		if (!isset($this->username)) {
 			$sessData = $this->mlogin->getSessionData();
@@ -653,7 +653,7 @@ class M_crud extends MY_Model
 			}
 		}
 		$username = $this->username;
-		
+
         if (isset($this->crudData['rowactions'])){
             $rowactposition = getArrayDef($this->crudData['rowactions'], 'position', 'right');
             $tdoptions = getArrayDef($this->crudData['rowactions'], 'tdoptions', '');
@@ -663,11 +663,11 @@ class M_crud extends MY_Model
         //print_r($rowactposition);
         //print_r($datagrid);
         $result = '';
-        
+
         $result = $result.'<script>'."\r\n";
         $result = $result.'var gridData = '.json_encode($datagrid['data']).";\r\n";
         $result = $result.'</script>'."\r\n";
-        
+
         $result = $result.'<table id="sample-table-1" class="table table-striped table-bordered table-hover">';
         $result = $result."\r\n".'<thead>';
         $result = $result."\r\n".'<tr>';
@@ -726,7 +726,7 @@ class M_crud extends MY_Model
             $result = $result."\r\n".'</tr>';
             $idx = $idx+1;
         }
-        
+
         $result = $result."\r\n".'</tbody>';
         $result = $result."\r\n".'</table>';
         return $result;
@@ -735,13 +735,13 @@ class M_crud extends MY_Model
         //$result['view'] = json_encode($datagrid['data']);
         //return json_encode($datagrid);
     }
-    
+
     function getViewRowActions($row){
         $data = $this->getRowActions($row);
         $result = $this->formatRowActions($data);
         return $result;
     }
-    
+
     function getRowCondition($condition, $data){
         if (($condition['type']=='equal') or ($condition['type']=='notequal')){
             //print_r($data);
@@ -766,7 +766,7 @@ class M_crud extends MY_Model
         }
         return 0;
     }
-    
+
     function getRowActions($row){
         $result = array();
         if (isset($this->crudData['rowactions']['list'])) {
@@ -793,17 +793,17 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function formatRowActions($rowactions){
         $data = array('rowactions'=>$rowactions);
         $data['mainurl'] = $this->getMainUrl();
         $result = $this->load->view('crud/rowactions', $data, true);
         return $result;
     }
-    
+
     function getViewDataGrid($params){
         if (!isset($this->crudData['sql'])){
-            $result = array('count'=>'', 'view'=>'', 'gridinfo'=>'', 
+            $result = array('count'=>'', 'view'=>'', 'gridinfo'=>'',
                 'pagination'=>'', 'crudcommands'=>'', 'cmdscripts'=>'');
         } else {
 			$params['pagerec'] = (int) $params['pagerec'];
@@ -815,7 +815,7 @@ class M_crud extends MY_Model
                 $params['datastart'] = 0;
                 //
             }
-			
+
             $data = $this->getDataGrid($params);
             $view = $this->formatViewGrid($data);
             $count = $data['count'];
@@ -827,12 +827,12 @@ class M_crud extends MY_Model
             $pagination = $this->formatViewPagination($pagelist);
             $commands = $this->getViewCommands();
             $cmdscripts = $this->getViewCmdScripts();
-            $result = array('count'=>$data['count'], 'view'=>$view, 'gridinfo'=>$data['gridinfo'], 
+            $result = array('count'=>$data['count'], 'view'=>$view, 'gridinfo'=>$data['gridinfo'],
                 'pagination'=>$pagination, 'crudcommands'=>$commands['view'], 'cmdscripts'=>$cmdscripts['view']);
         }
         return $result;
     }
-    
+
     function calcPagination($pagerec, $pagenum, $count){
         //echo $count;
         $edgecount = 1;
@@ -849,7 +849,7 @@ class M_crud extends MY_Model
             }
         }
         if (($pagenum == 1) or ($pnum==0)){
-            $result = array(array('name'=>'prev', 'caption'=>'', 'type'=>'start', 
+            $result = array(array('name'=>'prev', 'caption'=>'', 'type'=>'start',
                 'class'=>'disabled page-disabled', 'icon'=>'icon-double-angle-left', 'data-page'=>0));
         } else {
             $result = array(array('name'=>'prev', 'caption'=>'', 'type'=>'start', 'class'=>'pagebutton',
@@ -923,17 +923,17 @@ class M_crud extends MY_Model
                     array_push($result, $resitem);
                 }
             }
-            
+
         }
-        
+
         if (($pagenum == $pnum) or ($pnum==0)){
-            array_push($result, array('name'=>'next', 'caption'=>'', 'type'=>'end', 
+            array_push($result, array('name'=>'next', 'caption'=>'', 'type'=>'end',
                 'class'=>'disabled page-disabled', 'icon'=>'icon-double-angle-right', 'data-page'=>0));
         } else {
             array_push($result, array('name'=>'next', 'caption'=>'', 'type'=>'end', 'class'=>'pagebutton',
                 'icon'=>'icon-double-angle-right', 'data-page'=>$pagenum+1));
         }
-        
+
         return $result;
         /*
         if ($pnum<=10){
@@ -949,15 +949,15 @@ class M_crud extends MY_Model
                 array_push($result, $i);
             }
         }
-         * 
+         *
          */
         //array_push($result, 'end');
         //return $result;
     }
-    
+
     function formatViewPagination($pagelist){
         //print_r($pagelist);
-        
+
         $data = array('pagebuttons'=>$pagelist);
         $data['crudurl'] = $this->getMainUrl('crud');
         $data['crudname'] = $this->crudName;
@@ -981,21 +981,21 @@ class M_crud extends MY_Model
         return $result;
         */
     }
-    
+
     function getViewPagination($crudname, $params){
         $data = $this->getDataPagination($crudname, $params);
         $view = $this->formatViewPagination($data);
         $result = array('view'=>$view);
         return $result;
     }
-    
+
     function getDataCommands(){
         $result = array();
         if (isset($this->crudData['actions'])) {
             foreach($this->crudData['actions'] as $action){
                 //print_r($action);
                 $type = $action['type'];
-                
+
                 if (isset($this->actionTypes[$type])){
                     $xaction = array_merge($this->actionTypes[$type], $action);
                 } else {
@@ -1023,7 +1023,7 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function formatViewCommands($actions){
         $data = array('actions'=>$actions);
         $data['crudurl'] = $this->getMainUrl('crud');
@@ -1033,7 +1033,7 @@ class M_crud extends MY_Model
         $result = $this->load->view('crud/actions', $data, true);
         return $result;
     }
-    
+
     function formatViewCmdScripts($actions){
         $data = array('actions'=>$actions);
         $data['crudurl'] = $this->getMainUrl('crud');
@@ -1043,21 +1043,21 @@ class M_crud extends MY_Model
         $result = $this->load->view('crud/cmdscripts', $data, true);
         return $result;
     }
-    
+
     function getViewCommands(){
         $data = $this->getDataCommands();
         $view = $this->formatViewCommands($data);
         $result = array('view'=>$view);
         return $result;
     }
-    
+
     function getViewCmdScripts(){
         $data = array();//$this->getDataCmdScripts();
         $view = $this->formatViewCmdScripts($data);
         $result = array('view'=>$view);
         return $result;
     }
-    
+
     function getJsonFile($crudname, $type=''){
         if ($type==''){
             $type = 'query';
@@ -1067,7 +1067,7 @@ class M_crud extends MY_Model
         $json_data = file_get_contents($filename);
         return json_decode($json_data, true);
     }
-    
+
     function getTextFile($crudname, $type=''){
         if ($type==''){
             $type = 'js';
@@ -1077,7 +1077,7 @@ class M_crud extends MY_Model
         $text_data = file_get_contents($filename);
         return $text_data;
     }
-    
+
     function getParamsFromSQL($vsql){
         $tokens = preg_split('/[^a-zA-Z0-9\':_"]+/', $vsql);
         $temporaryArray = array();
@@ -1096,13 +1096,13 @@ class M_crud extends MY_Model
         }
         return $result;
     }
-    
+
     function getDefaultSQLParams(){
         //print_r($this->crudData);
         if (isset($this->crudData['sql'])){
             $sql = $this->crudData['sql'];
             $xparams = array();
-            //$xparams = $this->getParamsFromSQL($sql);        
+            //$xparams = $this->getParamsFromSQL($sql);
             if (isset($xparams['pagerec'])){
                 $xparams['pagerec'] = 10;
             }
@@ -1115,7 +1115,7 @@ class M_crud extends MY_Model
             return array();
         }
     }
-    
+
     function getViewCheckListBox($dataname, $dataparams){
         $datacbox = $this->getDataCheckListBox($dataname, $dataparams);
         if (isset($dataparams['colcount'])){
@@ -1126,7 +1126,7 @@ class M_crud extends MY_Model
         $view = $this->formatCheckListBox($datacbox, $colcount);
         $result = array('view'=>$view);
         return $result;
-        
+
     }
 
     function getDataCheckListBox($lookupname, $params){
@@ -1150,8 +1150,8 @@ class M_crud extends MY_Model
         //$qresult = $this->mdb->QueryData('application', $vsql, $params, 'record');
         return $result;
     }
-    
-    
+
+
     function rowToCheckbox($row){
         $result = array();
         if (is_array($row)){
@@ -1218,7 +1218,7 @@ class M_crud extends MY_Model
         }
         $idx = 0;
         foreach($arrcount as $itemcount){
-            
+
         }
         return $result;*/
     }
@@ -1269,14 +1269,14 @@ class M_crud extends MY_Model
             }
             array_push($elements, array('xtype'=>'/column'));
         }
-        
-        
+
+
         $data = array('arrelements'=>$elements);
         $result = $this->load->view('crud/checkboxlist', $data, true);
         //return json_encode($data);
         return $result;
     }
-    
+
     function executeMethod($command, $xparams){
 //        print_r($command);
 //        print_r($xparams);
@@ -1294,7 +1294,7 @@ class M_crud extends MY_Model
             throw new Exception('command '.$command.' tidak diketemukan.');
         }
     }
-    
+
 }
 
 
